@@ -8,27 +8,21 @@
     <script src="https://unpkg.com/alpinejs" defer></script>
   </head>
   <body>
-    <div
+    <form
       x-data="{
-            query: '',
-            img: '',
+      users: [],
 
-            getImage() {
-                this.img = `https://source.unsplash.com/1600x900/?${this.query}`;
-            }
-        }"
+      deleteUsers() {
+        console.log(this.users)
+      }
+    }"
+      x-on:submit.prevent="deleteUsers"
     >
-      <form x-on:submit.prevent="getImage">
-        <input type="text" x-model="query" />
-        <button type="submit">Search</button>
-      </form>
+      <input type="checkbox" x-model="users" value="1" /> Alex
+      <input type="checkbox" x-model="users" value="2" /> Bob
+      <input type="checkbox" x-model="users" value="3" /> Charlie
 
-      <div x-show="img">
-        <img
-          x-bind:src="img"
-          style="width: 100%; height: 100%; object-fit: cover"
-        />
-      </div>
-    </div>
+      <button type="submit">Delete</button>
+    </form>
   </body>
 </html>
