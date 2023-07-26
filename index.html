@@ -7,15 +7,56 @@
 
     <script src="https://unpkg.com/alpinejs" defer></script>
 
-    <style></style>
+    <style>
+      .bold {
+        font-weight: bold;
+      }
+
+      .progress {
+        width: 300px;
+        height: 10px;
+        background-color: #e0e0de;
+      }
+
+      .progress-inner {
+        height: 10px;
+        background-color: #2ecc71;
+      }
+    </style>
   </head>
   <body>
-    <div x-data="{progress: 0}">
-      <progress max="100" x-bind:value="progress">
-        <span x-text="`${progress}%`"></span>
-      </progress>
+    <!-- <div
+      x-data="{
+      selected: [],
+      people: [
+        { name: 'John Doe', id: 1 },
+        { name: 'Jane Doe', id: 2 },
+        { name: 'John Smith', id: 3 },
+        { name: 'Jane Smith', id: 4 },
+      ]
+    }"
+    >
+      <template x-for="person in people">
+        <div>
+          <input
+            type="checkbox"
+            x-bind:value="person.id"
+            x-bind:id="`person-${person.id}`"
+            x-model.number="selected"
+          />
+          <span
+            x-text="person.name"
+            x-bind:class="{'bold': selected.includes(person.id)
+        }"
+          ></span>
+        </div>
+      </template>
+    </div> -->
 
-      <button @click="progress = progress + 5">Increment</button>
+    <div class="progress" x-data="{progress: 0}">
+      <div class="progress-inner" x-bind:style="`width: ${progress}%`"></div>
+
+      <button x-on:click="progress = progress + 10">Increase</button>
     </div>
   </body>
 </html>
