@@ -11,24 +11,12 @@
     <style></style>
   </head>
   <body>
-    <div
-      x-data="{
-      body: '',
-      markdown: '',
-
-      preview() {
-        this.markdown = marked(this.body)
-      }
-    }"
-    >
-      <div>
-        <div>
-          <textarea x-model="body" cols="30" rows="4"></textarea>
-        </div>
-        <button @click="preview">Preview</button>
-      </div>
-
-      <div x-html="markdown"></div>
-    </div>
+    <form x-data x-on:submit.prevent="console.log('submitted')">
+      <textarea
+        cols="30"
+        rows="10"
+        x-on:keyup.enter="$el.closest('form').dispatchEvent(new Event('submit'))"
+      ></textarea>
+    </form>
   </body>
 </html>
